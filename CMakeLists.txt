@@ -20,7 +20,25 @@ elseif(UNIX)
 
 endif()
 
-add_executable(MP3_manager main.cpp GUI/Button.cpp GUI/Button.h GUI/Textbox.cpp GUI/Textbox.h GUI/gui-lib.h cPython.cpp cPython.h MediaInfo.cpp MediaInfo.h)
+set(AGUI_SRC
+        Dependencies/AGUI/Window.h
+        Dependencies/AGUI/Window.cpp
+        Dependencies/AGUI/Button.h
+        Dependencies/AGUI/Button.cpp
+        Dependencies/AGUI/Text.h
+        Dependencies/AGUI/Text.cpp
+        Dependencies/AGUI/TextBox.h
+        Dependencies/AGUI/TextBox.cpp
+        Dependencies/AGUI/gui_lib.h
+        Dependencies/AGUI/gui_utils.h
+        Dependencies/AGUI/gui_utils.cpp)
+
+add_executable(MP3_manager main.cpp
+        ${AGUI_SRC}
+        cPython.cpp
+        cPython.h
+        MediaInfo.cpp
+        MediaInfo.h Gui.cpp Gui.h)
 
 set(WIN32_LIBS
         sfml-graphics
